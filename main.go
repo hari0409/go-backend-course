@@ -18,7 +18,7 @@ const (
 func main() {
 	conn, err := sql.Open(dbDriver, dbSource)
 	if err != nil {
-		log.Println(err)
+		log.Println("Error Opening DB Connection: ", err)
 	}
 
 	server := api.NewServer(db.NewStore(conn))
