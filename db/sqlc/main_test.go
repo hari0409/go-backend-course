@@ -6,6 +6,7 @@ import (
 	"os"
 	"testing"
 
+	"github.com/hari0409/backend-go/util"
 	_ "github.com/lib/pq"
 )
 
@@ -13,14 +14,13 @@ var testQueries *Queries
 
 var testDB *sql.DB
 
-const (
-	dbDriver = "postgres"
-	dbSource = "postgres://postgres:mysecretpassword@localhost:5432/simple_bank?sslmode=disable"
-)
-
 func TestMain(m *testing.M) {
 	var err error
-	testDB, err = sql.Open(dbDriver, dbSource)
+	config, err := util.LoadConfig(".")
+	if err != nil {
+		log.Fatal(err)
+	}
+	testDB, err = sql.Open(config.DBDriver, config.DBSource)
 	if err != nil {
 		log.Println(err)
 	}

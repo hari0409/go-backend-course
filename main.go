@@ -6,23 +6,22 @@ import (
 
 	"github.com/hari0409/backend-go/api"
 	db "github.com/hari0409/backend-go/db/sqlc"
+	"github.com/hari0409/backend-go/util"
 	_ "github.com/lib/pq"
 )
 
-const (
-	dbDriver      = "postgres"
-	dbSource      = "postgres://postgres:mysecretpassword@localhost:5432/simple_bank?sslmode=disable"
-	serverAddress = "0.0.0.0:8080"
-)
-
 func main() {
-	conn, err := sql.Open(dbDriver, dbSource)
+	config, err := util.LoadConfig(".")
 	if err != nil {
-		log.Println("Error Opening DB Connection: ", err)
+		log.Fatal(err)
+	}
+	conn, err := sql.Open(config.DBDriver, config.DBSource)
+	if err != nil {
+		log.Fatal("Error Opening DB Connection: ", err)
 	}
 
 	server := api.NewServer(db.NewStore(conn))
-	err = server.Start(serverAddress)
+	err = server.Start(config.ServerAddress)
 	if err != nil {
 		log.Fatal("Cannot start server: ", err)
 	}
