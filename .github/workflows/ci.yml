@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: Test
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Set up go
         uses: actions/setup-go@v2
@@ -20,3 +20,4 @@ jobs:
         uses: actions/checkout@v2
       - name: Test
         run: make gotest
+
