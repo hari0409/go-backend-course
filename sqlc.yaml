@@ -10,3 +10,4 @@ packages:
     emit_interface: false # To generate Querier interface for the generated package to mock the db for higher level function 
     emit_exact_table_names: false # This, when true will change the object name to Plural.   
     sql_package: "database/sql"
+    emit_empty_slices: true
