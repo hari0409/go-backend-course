@@ -32,6 +32,11 @@ jobs:
         id: go
       - name: Checkout go into go module repo
         uses: actions/checkout@v2
+      - name: Install Migrate CLI
+        run: |
+          curl -L https://github.com/golang-migrate/migrate/releases/download/v4.17.1/migrate.linux-amd64.tar.gz | tar xvz
+          sudo mv migrate.linux-amd64 /usr/bin
+          which migrate
       - name: Run Migrations
         run: make migrateup
       - name: Test
