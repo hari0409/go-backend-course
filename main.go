@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"log"
 
+	_ "github.com/golang/mock/mockgen/model"
 	"github.com/hari0409/backend-go/api"
 	db "github.com/hari0409/backend-go/db/sqlc"
 	"github.com/hari0409/backend-go/util"

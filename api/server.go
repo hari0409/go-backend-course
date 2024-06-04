@@ -6,12 +6,12 @@ import (
 )
 
 type Server struct {
-	store *db.Store // To execute the DB queries and the transaction.
+	store db.Store // To execute the DB queries and the transaction.
 	// We dont use the *db.Queries here because Queries is already in the Store.
 	router *gin.Engine // Router of gin to send the request to the handler.
 }
 
-func NewServer(store *db.Store) *Server {
+func NewServer(store db.Store) *Server {
 	// Create the server & the router
 	server := &Server{
 		store: store,

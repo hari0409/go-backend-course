@@ -7,7 +7,7 @@ packages:
     engine: "postgresql" # The database engine being used
     emit_db_tags: true # Set it true when needed to generate a struct
     emit_prepared_queries: false # Generate code that works with prepare statement
-    emit_interface: false # To generate Querier interface for the generated package to mock the db for higher level function 
+    emit_interface: true # To generate Querier interface for the generated package to mock the db for higher level function 
     emit_exact_table_names: false # This, when true will change the object name to Plural.   
     sql_package: "database/sql"
     emit_empty_slices: true
